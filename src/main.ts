@@ -54,7 +54,13 @@ from video
   }
 
 
-  const camera = await navigator.mediaDevices.getUserMedia({ 'video': true })
+  const camera = await navigator.mediaDevices.getUserMedia({
+  video: {
+    facingMode: {
+      exact: "environment"
+    }
+  }
+})
   const videoElement = document.querySelector<HTMLVideoElement>("#vid")!
   videoElement.srcObject = camera
   const videoControlButton = document.querySelector<HTMLDivElement>('#vidc')!
@@ -80,7 +86,6 @@ from video
 
   const detectBtn = document.querySelector("#detect")!
   detectBtn.addEventListener('click', () => {
-
     detectBarcode(false)
   })
 
