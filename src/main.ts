@@ -156,6 +156,9 @@ function onBarcodeDetected(barcode: any) {
   requestAnimationFrame(
     () => paintBarcodeBoundingBox(barcode)
   )
+  if ('vibrate' in navigator) {
+    navigator.vibrate(200)
+  }
 }
 
 function paintBarcodeBoundingBox(barcode: any) {
